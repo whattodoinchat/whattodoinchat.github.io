@@ -1,2 +1,2 @@
-# whattoinchat.github.io
+# whattodoinchat.github.io
 What To Do In // Chat
