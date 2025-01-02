@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import CityPage from "./pages/CityPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import ContactPage from "./pages/ContactPage";
 import Cookies from "./pages/Cookies";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/city/:slug" element={<CityPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contactpage" element={<ContactPage />} />
           <Route path="/cookies" element={<Cookies />} />
         </Routes>
       </BrowserRouter>

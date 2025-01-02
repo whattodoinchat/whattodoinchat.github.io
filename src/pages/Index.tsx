@@ -1,4 +1,5 @@
 import { CityCard } from "@/components/CityCard";
+import { Link } from "react-router-dom";
 
 const featuredCities = [
   {
@@ -23,7 +24,7 @@ const featuredCities = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <header className="relative h-[60vh] flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1920"
@@ -41,7 +42,7 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container py-16">
+      <main className="container py-16 flex-grow">
         <h2 className="text-3xl font-serif text-travel-navy mb-8">
           Featured Cities
         </h2>
@@ -51,6 +52,25 @@ const Index = () => {
           ))}
         </div>
       </main>
+
+      <footer className="py-8 border-t border-travel-slate/20">
+        <div className="container">
+          <nav className="flex justify-center gap-8 text-sm text-travel-slate">
+            <Link to="/about" className="hover:text-travel-gold transition-colors">
+              About
+            </Link>
+            <Link to="/cookies" className="hover:text-travel-gold transition-colors">
+              Cookies
+            </Link>
+            <Link to="/contact" className="hover:text-travel-gold transition-colors">
+              Contact
+            </Link>
+            <Link to="/contactpage" className="hover:text-travel-gold transition-colors">
+              Contact Page
+            </Link>
+          </nav>
+        </div>
+      </footer>
     </div>
   );
 };

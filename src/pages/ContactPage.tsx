@@ -2,12 +2,62 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Contact = () => {
+const ContactPage = () => {
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    subject: 'StaticForms - Contact Form',
+    honeypot: '', // if any value received in this field, form submission will be ignored.
+    message: '',
+    replyTo: '@', // this will set replyTo of email to email address entered in the form
+    accessKey: '6975cb07-7351-44ef-ad1f-76880695f259' // get your access key from https://www.staticforms.xyz
+  });
+
+  const [response, setResponse] = useState({
+    type: '',
+    message: ''
+  });
+
+  const handleChange = e =>
+    setContact({ ...contact, [e.target.name]: e.target.value });
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const res = await fetch('https://api.staticforms.xyz/submit', {
+        method: 'POST',
+        body: JSON.stringify(contact),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
+        setResponse({
+          type: 'success',
+          message: 'Thank you for reaching out to us.'
+        });
+      } else {
+        setResponse({
+          type: 'error',
+          message: json.message
+        });
+      }
+    } catch (e) {
+      console.log('An error occurred', e);
+      setResponse({
+        type: 'error',
+        message: 'An error occured while submitting the form'
+      });
+    }
+  };
+
+  const _handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message sent",
@@ -35,25 +85,26 @@ const Contact = () => {
 
           <form action="https://api.staticforms.xyz/submit" method="post" onSubmit={handleSubmit} className="space-y-6">
             <Input type="hidden" name="accessKey" value="6975cb07-7351-44ef-ad1f-76880695f259" /> {/* https://www.staticforms.xyz/ key */}
+            <Input type="hidden" name="subject" onChange={handleChange} />
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-travel-navy mb-2">
                 Name
               </label>
-              <Input id="name" name="name" required className="w-full" />
+              <Input id="name" name="name" onChange={handleChange} required className="w-full" />
             </div>
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-travel-navy mb-2">
                 Email
               </label>
-              <Input id="email" type="email" name="email" required className="w-full" />
+              <Input id="email" type="email" name="email" onChange={handleChange} required className="w-full" />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-travel-navy mb-2">
                 Message
               </label>
-              <Textarea id="message" name="message" required className="w-full min-h-[150px]" />
+              <Textarea id="message" name="message" onChange={handleChange} required className="w-full min-h-[150px]" />
             </div>
 
             <Button type="submit" className="w-full md:w-auto">
@@ -68,4 +119,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

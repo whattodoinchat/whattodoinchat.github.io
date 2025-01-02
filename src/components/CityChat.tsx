@@ -22,7 +22,7 @@ export const CityChat = ({ cityName }: { cityName: string }) => {
     // TODO: Implement AI response logic
     setMessages(prev => [...prev, { 
       role: "assistant", 
-      content: `Here are some suggestions for ${cityName}! (AI integration coming soon)`
+      content: `Here you will be able to ask some questions, and more, about ${cityName}, but not yet! (AI integration coming soon)`
     }]);
     setInput("");
   };
