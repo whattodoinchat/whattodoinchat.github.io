@@ -6,9 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CityPage from "./pages/CityPage";
 import AboutUs from "./pages/AboutUs";
-import Contact from "./pages/Contact";
 import ContactPage from "./pages/ContactPage";
 import Cookies from "./pages/Cookies";
+import WhatsNext from "./pages/WhatsNext";
 
 const queryClient = new QueryClient();
 
@@ -22,8 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/city/:slug" element={<CityPage />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/contactpage" element={<ContactPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/whatsnext" element={<WhatsNext/>} />
           <Route path="/cookies" element={<Cookies />} />
         </Routes>
       </BrowserRouter>

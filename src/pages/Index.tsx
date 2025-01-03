@@ -59,14 +59,14 @@ const Index = () => {
             <Link to="/about" className="hover:text-travel-gold transition-colors">
               About
             </Link>
-            <Link to="/cookies" className="hover:text-travel-gold transition-colors">
-              Cookies
+            <Link to="/whatsnext" className="hover:text-travel-gold transition-colors">
+              What's next
             </Link>
             <Link to="/contact" className="hover:text-travel-gold transition-colors">
               Contact
             </Link>
-            <Link to="/contactpage" className="hover:text-travel-gold transition-colors">
-              Contact Page
+            <Link to="/cookies" className="hover:text-travel-gold transition-colors">
+              Cookies
             </Link>
           </nav>
         </div>
