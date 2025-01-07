@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { CityChat } from "@/components/CityChat";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 // Mock data - in a real app, this would come from an API
 const cityData = {
@@ -12,6 +14,7 @@ const cityData = {
       {
         title: "Top 10 Must-Visit Attractions",
         excerpt: "From the Eiffel Tower to the Louvre, discover the essential sights...",
+        link: "attractions"
       },
       {
         title: "Hidden Gems of Paris",
@@ -31,7 +34,7 @@ const CityPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <header className="relative h-[40vh]">
         <img
           src={city.image}
@@ -47,22 +50,28 @@ const CityPage = () => {
         </div>
       </header>
 
-      <main className="container py-16">
+      <main className="container py-16 flex-grow">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-serif text-travel-navy mb-8">
               Travel Tips & Articles
             </h2>
             <div className="space-y-6">
-              {city.articles.map((article, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-serif text-travel-navy mb-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-travel-slate">{article.excerpt}</p>
-                  </CardContent>
-                </Card>
+            {city.articles.map((article, index) => (
+                <Link 
+                  key={index} 
+                  to={article.link ? `${article.link}` : "#"}
+                  className="block"
+                >
+                  <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-serif text-travel-navy mb-2 hover:text-travel-gold transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-travel-slate">{article.excerpt}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -71,6 +80,7 @@ const CityPage = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

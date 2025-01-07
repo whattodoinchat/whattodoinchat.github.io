@@ -71,7 +71,7 @@ export default {
       },
       fontFamily: {
         serif: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

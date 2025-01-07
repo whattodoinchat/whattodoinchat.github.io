@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 
 const Cookies = () => {
   return (
-    <div className="min-h-screen bg-travel-cream">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-travel-cream flex flex-col">
+      <div className="container mx-auto px-4 py-16 flex-grow">
         <nav className="mb-8">
           <Button variant="ghost" asChild>
             <Link to="/" className="text-travel-navy hover:text-travel-gold">
@@ -39,6 +40,7 @@ const Cookies = () => {
           </ul> */}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

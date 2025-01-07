@@ -1,10 +1,11 @@
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-travel-cream">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-travel-cream flex flex-col">
+      <div className="container mx-auto px-4 py-16 flex-grow">
         <nav className="mb-8">
           <Button variant="ghost" asChild>
             <Link to="/" className="text-travel-navy hover:text-travel-gold">
@@ -42,6 +43,7 @@ const AboutUs = () => {
           <h2 className="text-2xl font-serif text-travel-navy mt-8 mb-4 ">Happy travels!</h2>  
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
